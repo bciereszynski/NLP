@@ -11,6 +11,7 @@ import os
 
 
 def analyzeFile(text, outFilePath):
+    nlp = spacy.load("en_core_web_sm")
     my_doc = nlp(text)
     tokens_count = len(my_doc)
     sents_count = len(list(my_doc.sents))
@@ -76,9 +77,10 @@ def analyzeFile(text, outFilePath):
 
     out.write("5 najczęściej występujących rzeczowników:\n")
     for noun, count in freq_nouns:
-        out.write(f"{noun}: {count}\n")
+        out.write(f"{noun} --- {count}\n")
 
-    out.write("Dla 2 najczęściej występujących rzeczowników - wszystkie określające je przymiotniki występujące w tekście:\n")
+    out.write(
+        "Dla 2 najczęściej występujących rzeczowników - wszystkie określające je przymiotniki występujące w tekście:\n")
     for noun, count in freq_nouns[:2]:
         out.write(f"{noun}:\n")
         for adj, count in adjs_count_for_noun[noun]:
