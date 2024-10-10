@@ -56,7 +56,7 @@ def analyzeFile(text, outFilePath):
         adj_lemma_count = {}
         for token in adjs:
             lemma = token.lemma_
-            if lemma in noun_lemma_count:
+            if lemma in adj_lemma_count:
                 adj_lemma_count[lemma] += 1
             else:
                 adj_lemma_count[lemma] = 1
