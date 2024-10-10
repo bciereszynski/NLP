@@ -50,9 +50,9 @@ def analyzeFile(text, outFilePath):
     adjs_count_for_noun = {}
     for noun, count in freq_nouns[:2]:
         adjs = []
-        for chunk in my_doc.noun_chunks:
-            if chunk.root.text == noun:
-                adjs.extend([token for token in chunk if token.pos_ == "ADJ"])
+        for token in my_doc:
+            if token.dep_ == "amod" and token.head.lemma_ == noun:
+                adjs.append(token)
         adj_lemma_count = {}
         for token in adjs:
             lemma = token.lemma_
