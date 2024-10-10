@@ -25,19 +25,18 @@ def analyzeFile(text, outFilePath):
     adv_count = 0
 
     for token in my_doc:
-        if token.pos_ == 'VERB':
+        if token.tag_.startswith("VB"):
             verb_count += 1
-        elif token.pos_ == 'NOUN':
+        elif token.tag_.startswith("NN"):
             noun_count += 1
-        elif token.pos_ == 'ADJ':
+        elif token.tag_.startswith("JJ"):
             adj_count += 1
-        elif token.pos_ == 'ADV':
+        elif token.tag_.startswith("RB"):
             adv_count += 1
 
     noun_lemma_count = {}
-
     for token in my_doc:
-        if token.pos_ == "NOUN":
+        if token.tag_.startswith("NN"):
             lemma = token.lemma_
             if lemma in noun_lemma_count:
                 noun_lemma_count[lemma] += 1
