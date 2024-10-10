@@ -37,7 +37,7 @@ def analyzeFile(text, outFilePath):
 
     noun_lemma_count = {}
     for token in my_doc:
-        if token.tag_.startswith("NN"):
+        if token.tag_.startswith("NN") and not token.is_punct:
             lemma = token.lemma_
             if lemma in noun_lemma_count:
                 noun_lemma_count[lemma] += 1
