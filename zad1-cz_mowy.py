@@ -2,7 +2,13 @@ import spacy
 import sys
 import os
 
-nlp = spacy.load("en_core_web_lg")
+
+# Setup:
+# pip install -U spacy
+# python -m spacy download en_core_web_sm
+
+# usage: python ps1.py <dir_name>
+
 
 def analyzeFile(text, outFilePath):
     my_doc = nlp(text)
@@ -91,3 +97,5 @@ for file in os.listdir(directory):
             text = f.read()
             analyzeFile(text, outFilePath)
             f.close()
+
+# Author: Bartosz Piotr Ciereszyński
